@@ -1,0 +1,113 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <link rel="icon" href="lg.png" type="image/x-icon">
+    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Personal Virtual Vault</title>
+</head>
+<body>
+    <!-- Header -->
+    <header class="header">
+        <div class="title">VPRIO.</div>
+        <div class="toggle-container">
+            <div class="toggle-switch" onclick="toggleTheme()"></div>
+        </div>
+    </header>
+
+    <div class="container">
+        <h1>Welcome to VPRIO.</h1>
+        <p>APRIO is your <span>personal virtual vault</span> now! Your one-stop resource for mock exams and study materials</p>
+
+        <div class="search-bar">
+            <input type="text" id="searchInput" placeholder="Search resources..." onkeyup="searchResources()">
+        </div>
+
+        <div class="card-container">
+            <!-- Card 1 -->
+            <div class="card" data-title="CLSU CAT Reviewer">
+                <h3>CLSU CAT Reviewer</h3>
+                <p><strong>Subject:</strong> Entrance Exam</p>
+                <p>This Central Luzon State University Entrance Exam file is a reviewer for incoming freshmen students. Remember that this is not the actual exam you will encounter prior to your admission.</p>
+                <p>However, by taking this sample entrance exam, it will give an idea of how much you have learned from your secondary school years. </p>
+                <!-- <p>Size:</p> -->
+                <p>See Resources | 29.1 MB</p>
+                <p>More | 920 MB</p>
+                <p>>> Use AI to practice is not yet available</p>
+                <a href="https://drive.google.com/file/d/1A-ihz1s2xtPqvhUqz_wz9BdskCS-Y5lk/view?usp=drive_link" class="button">See resources</a>
+                <a href="https://drive.google.com/file/d/1dBRRwlxPTd_4JAt--9zsu7ndV-q6jnRX/view?usp=drive_link" class="button more">More</a>
+              <a href="#" class="button disabled">Use AI to practice</a>
+            </div>
+
+            <!-- PROJECT CARD -->
+            <div class="card" data-title="In-Progress Project">
+                <h3>In-Progress Project</h3>
+                <p><strong>???:</strong> Innovation</p>
+                <p>As the CEO and Founder of APRIO, we are dedicated to enhancing human satisfaction.</p>
+                <p>Our mission is to develop innovative solutions that prioritize people, ensuring that our work positively impacts lives and fosters meaningful connections.</p>
+                <a href="#" class="button" onclick="openModal(event)">Preview Only</a>
+                <!-- <a href="#" class="button disabled">Not Available</a> -->
+            </div>
+
+            <!-- Modal -->
+            <div id="videoModal" class="modal">
+                <div class="modal-content">
+                    <span class="close" onclick="closeModal()">&times;</span>
+                    <div class="card">
+                        <!-- <h3>Video Preview</h3> -->
+                        <div class="video-container">
+                            <video id="modalVideo" controls>
+                                <source src="aprio.mp4" type="video/mp4"> <!-- Replace with your video URL -->
+                                Your browser does not support the video tag.
+                            </video>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Card shopify-->
+            <div class="card" data-title="Replicated Shopifly Sales Board">
+                <h3>Shopify SalesBoard</h3>
+                <p><strong>About:</strong> OpenAI | Personal Project</p>
+                <p>Replicated Shopify SalesBoard using OpenAI.</p>
+                <a href="https://unjelawgelo.github.io/shopify/" class="button">View Now</a>
+            </div>
+
+
+
+            <!-- Card 2 -->
+            <div class="card" data-title="How I Reached My First Million">
+                <h3>How I Reached My First Million</h3>
+                <p><strong>About:</strong> Life</p>
+                <p>A comprehensive guide, testimonies and compilations of how it is possible to be rich while keeping your faith.</p>
+                <a href="#" class="button disabled">Not Available</a>
+            </div>
+
+            <!-- Card 3 -->
+            <div class="card" data-title="Learn A Language">
+                <h3>Learn A Language</h3>
+                <p><strong>Subject:</strong> Languages</p>
+                <p>Collection of files/tutorials on how I learned different foreign languages.</p>
+                <p>>> Chinese | French | German | JP</p>
+                <a href="#" class="button disabled">Not Available</a>
+            </div>
+        </div>
+    </div>
+
+
+    <!-- Floating Frog Icon -->
+    <div id="frogIcon" class="frog-icon" onclick="floodWithFrogs()">
+        <i class="fas fa-frog"></i>
+    </div>
+
+    <!-- Footer -->
+    <footer class="footer">
+        © MIKE ANGELO JAVIER MARIANO | <span>VPRIO.</span> All rights reserved lang sayo yiie sasakalin kita sige.
+    </footer>
+ 
+    <script src="scripts.js"></script>
+    </body>
+</html>

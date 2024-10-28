@@ -20,13 +20,13 @@
 
     <div class="container">
         <h1>Welcome to VPRIO.</h1>
-        <p>APRIO is your <span>personal virtual vault</span> now! Your one-stop resource for mock exams and study materials</p>
+        <p>APRIO is your personal virtual vault now! Your one-stop resource for mock exams and study materials</p>
 
+        
         <div class="search-bar">
             <input type="text" id="searchInput" placeholder="Search resources..." onkeyup="searchResources()">
         </div>
 
-       
         <!-- Cards Container -->
         <div class="card-container">
             <!-- Card 1 -->
@@ -78,6 +78,20 @@
             </div>
         </div>
 
+        <!-- Modal -->
+        <div id="videoModal" class="modal">
+            <div class="modal-content">
+                <span class="close" onclick="closeModal()">&times;</span>
+                <div class="card">
+                    <div class="video-container">
+                        <video id="modalVideo" controls>
+                            <source src="aprio.mp4" type="video/mp4">
+                            Your browser does not support the video tag.
+                        </video>
+                    </div>
+                </div>
+            </div>
+        </div>
 
     <!-- Floating Frog Icon -->
     <div id="frogIcon" class="frog-icon" onclick="floodWithFrogs()">
@@ -86,7 +100,7 @@
 
     <!-- Footer -->
     <footer class="footer">
-        © MIKE ANGELO JAVIER MARIANO | <span>VPRIO.</span> All rights reserved lang sayo yiie sasakalin kita sige.
+        MIKE ANGELO | <span>VPRIO.</span> All rights reserved lang sayo yiie sasakalin kita.
     </footer>
  
     <script src="scripts.js"></script>

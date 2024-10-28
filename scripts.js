@@ -3,6 +3,7 @@ function toggleTheme() {
     document.body.classList.toggle("dark-mode");
 }
 
+
 // Search functionality
 function searchResources() {
     const input = document.getElementById("searchInput").value.toLowerCase();
@@ -10,7 +11,9 @@ function searchResources() {
 
     cards.forEach(card => {
         const title = card.getAttribute("data-title").toLowerCase();
-        if (title.includes(input)) {
+        const content = card.innerText.toLowerCase(); // Get all text content of the card
+        // Check if the input is included in either the title or content
+        if (title.includes(input) || content.includes(input)) {
             card.style.display = "block";
         } else {
             card.style.display = "none";

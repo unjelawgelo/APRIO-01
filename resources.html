@@ -1,0 +1,288 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <link rel="icon" href="lg.png" type="image/x-icon">
+    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Resources - VPRIO</title>
+    <style>
+        /* Main styles */
+        body {
+            font-family: 'Poppins', sans-serif;
+            background-color: #f5f7fa;
+            color: #333;
+            margin: 0;
+            padding: 0;
+            display: flex;
+            flex-direction: column;
+            min-height: 100vh; /* Ensures footer is at the bottom */
+        }
+        .container {
+            max-width: 800px;
+            margin: 40px auto;
+            padding: 20px;
+            background-color: #ffffff;
+            box-shadow: 0px 4px 12px rgba(0, 0, 0, 0.1);
+            border-radius: 8px;
+            flex: 1; /* Allow the container to grow */
+            text-align: center;
+        }
+        h1 {
+            color: #4CAF50;
+            font-weight: 600;
+            margin-bottom: 10px;
+        }
+        p {
+            color: #666;
+            font-size: 1rem;
+        }
+        
+        /* PDF item styling */
+        .pdf-item {
+        border: 1px solid #e0e0e0;
+        border-radius: 8px;
+        padding: 15px;
+        margin-bottom: 15px;
+        display: flex;
+        align-items: center;
+        background-color: #f9f9f9;
+        flex-wrap: wrap; /* Allow wrapping for better responsiveness */
+    }
+
+    .pdf-item h3 {
+        margin: 0;
+        flex: 1; /* Allows the title to take available space */
+        min-width: 0; /* Prevent overflow of text */
+        text-align: left; /* Align text to the left */
+        font-weight: normal;
+    }
+
+    .button-container {
+        display: flex;
+        flex-shrink: 0; /* Prevent shrinking of button container */
+        gap: 10px; /* Space between buttons */
+    }
+
+        .preview-button, .download-button {
+            padding: 10px 15px;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            color: #fff;
+            font-size: 14px;
+            transition: background-color 0.3s;
+        }
+
+        .preview-button {
+            background-color: #28a745; /* Bootstrap primary */
+        }
+
+        .preview-button:hover {
+            background-color: #218838; /* Darker blue on hover */
+        }
+
+        .download-button {
+            background-color: #28a745; /* Bootstrap success */
+        }
+
+        .download-button:hover {
+            background-color: #218838; /* Darker green on hover */
+        }
+
+        .pdf-container {
+            display: none; /* Hidden by default */
+            width: 100%;
+            margin-top: 10px;
+        }
+
+        /* Download button styling */
+        .download-section {
+            margin-top: 10px;
+        }
+        .download-button {
+            background-color: #f39c12;
+            color: white;
+            padding: 8px 12px; /* Adjusted padding for better spacing */
+            border-radius: 5px;
+            font-size: 14px;
+            text-decoration: none;
+            transition: background-color 0.3s ease;
+        }
+        .download-button:hover {
+            background-color: #e67e22;
+        }
+        .download-button .fa-download {
+            margin-right: 6px;
+        }
+
+        /* Footer styling */
+        footer.footer {
+            margin-top: 30px;
+            color: #aaa;
+            font-size: 0.9rem;
+        }
+        footer.footer span {
+            font-weight: bold;
+        }
+        iframe {
+            width: 100%;
+            height: 200px; /* Adjust as needed */
+            border: none;
+        }
+    </style>
+</head>
+<body>
+    <!-- Header -->
+    <header class="header">
+        <div class="title">VPRIO.</div>
+    </header>
+
+    <!-- Main Content -->
+    <div class="container">
+        <h1>Resources for CLSU CAT Reviewer</h1>
+        <p>Access study materials, exam guides, and more resources here.</p>
+
+        <!-- PDF List -->
+        <div class="pdf-item">
+            <h3>1. [DOST] 1001 Fundamentals of Engineering Practice Problems</h3>
+            <div>
+                <button class="preview-button" onclick="togglePreview('pdf1')">
+                    <i class="fas fa-eye"></i> Preview PDF
+                </button>
+                <a href="1 [DOST] 1001 Fundamentals of Engineering Practice Problems.pdf" download class="download-button">
+                    <i class="fas fa-download"></i> Download PDF
+                </a>
+            </div>
+            <div class="pdf-container" id="pdf1">
+                <iframe src="1 [DOST] 1001 Fundamentals of Engineering Practice Problems.pdf" width="100%" height="100%" frameborder="0"></iframe>
+            </div>
+        </div>
+
+        <div class="pdf-item">
+            <h3>2. [DOST] Compiled Reviewer</h3>
+            <div>
+                <button class="preview-button" onclick="togglePreview('pdf2')">
+                    <i class="fas fa-eye"></i> Preview PDF
+                </button>
+                <a href="2 [DOST] Compiled Reviewer.pdf" download class="download-button">
+                    <i class="fas fa-download"></i> Download PDF
+                </a>
+            </div>
+            <div class="pdf-container" id="pdf2">
+                <iframe src="2 [DOST] Compiled Reviewer.pdf" width="100%" height="100%" frameborder="0"></iframe>
+            </div>
+        </div>
+
+        <div class="pdf-item">
+            <h3>3. [DOST] JLSS Primer 1</h3>
+            <div>
+                <button class="preview-button" onclick="togglePreview('pdf3')">
+                    <i class="fas fa-eye"></i> Preview PDF
+                </button>
+                <a href="3 [DOST] JLSS Primer.pdf" download class="download-button">
+                    <i class="fas fa-download"></i> Download PDF
+                </a>
+            </div>
+            <div class="pdf-container" id="pdf3">
+                <iframe src="3 [DOST] JLSS Primer.pdf" width="100%" height="100%" frameborder="0"></iframe>
+            </div>
+        </div>
+
+        <div class="pdf-item">
+            <h3>4. [DOST] JLSS Primer</h3>
+            <div>
+                <button class="preview-button" onclick="togglePreview('pdf4')">
+                    <i class="fas fa-eye"></i> Preview PDF
+                </button>
+                <a href="4 [DOST] JLSS Primer 2.pdf" download class="download-button">
+                    <i class="fas fa-download"></i> Download PDF
+                </a>
+            </div>
+            <div class="pdf-container" id="pdf4">
+                <iframe src="4 [DOST] JLSS Primer 2.pdf" width="100%" height="100%" frameborder="0"></iframe>
+            </div>
+        </div>
+
+        <div class="pdf-item">
+            <h3>5. [DOST] Recommended Time Frame For Each PDF File</h3>
+            <div>
+                <button class="preview-button" onclick="togglePreview('pdf5')">
+                    <i class="fas fa-eye"></i> Preview PDF
+                </button>
+                <a href="5 [DOST] Recommended Time Frame For Each PDF File.pdf" download class="download-button">
+                    <i class="fas fa-download"></i> Download PDF
+                </a>
+            </div>
+            <div class="pdf-container" id="pdf5">
+                <iframe src="5 [DOST] Recommended Time Frame For Each PDF File.pdf" width="100%" height="100%" frameborder="0"></iframe>
+            </div>
+        </div>
+
+        <div class="pdf-item">
+            <h3>6 [DOST] Siyensiya Bilidad 1</h3>
+            <div>
+                <button class="preview-button" onclick="togglePreview('pdf6')">
+                    <i class="fas fa-eye"></i> Preview PDF
+                </button>
+                <a href="6 [DOST] Siyensiya Bilidad.pdf" download class="download-button">
+                    <i class="fas fa-download"></i> Download PDF
+                </a>
+            </div>
+            <div class="pdf-container" id="pdf6">
+                <iframe src="6 [DOST] Siyensiya Bilidad.pdf" width="100%" height="100%" frameborder="0"></iframe>
+            </div>
+        </div>
+
+        <div class="pdf-item">
+            <h3>7 [DOST] Siyensiya Bilidad 2</h3>
+            <div>
+                <button class="preview-button" onclick="togglePreview('pdf7')">
+                    <i class="fas fa-eye"></i> Preview PDF
+                </button>
+                <a href="7 [DOST] Siyensiya Bilidad 2.pdf" download class="download-button">
+                    <i class="fas fa-download"></i> Download PDF
+                </a>
+            </div>
+            <div class="pdf-container" id="pdf7">
+                <iframe src="7 [DOST] Siyensiya Bilidad 2.pdf" width="100%" height="100%" frameborder="0"></iframe>
+            </div>
+        </div>
+
+
+        <div class="pdf-item">
+            <h3>8. [DOST] Undergraduate Primer</h3>
+            <div>
+                <button class="preview-button" onclick="togglePreview('pdf8')">
+                    <i class="fas fa-eye"></i> Preview PDF
+                </button>
+                <a href="8 [DOST] Undergraduate Primer.pdf" download class="download-button">
+                    <i class="fas fa-download"></i> Download PDF
+                </a>
+            </div>
+            <div class="pdf-container" id="pdf8">
+                <iframe src="8 [DOST] Undergraduate Primer.pdf" width="100%" height="100%" frameborder="0"></iframe>
+            </div>
+        </div>
+ 
+    </div>
+    <!-- Floating Frog Icon -->
+    <div id="frogIcon" class="frog-icon" onclick="floodWithFrogs()">
+        <i class="fas fa-frog"></i>
+    </div>
+    <!-- Footer -->
+    <footer class="footer">
+        <p>&copy; 2024 VPRIO. All Rights Reserved lang talaga sayo. <span>Version 1.0</span></p>
+    </footer>
+
+    <script>
+        function togglePreview(pdfId) {
+            const pdfContainer = document.getElementById(pdfId);
+            pdfContainer.style.display = pdfContainer.style.display === "none" || pdfContainer.style.display === "" ? "block" : "none";
+        }
+    </script>
+        <script src="scripts.js"></script>
+</body>
+</html>

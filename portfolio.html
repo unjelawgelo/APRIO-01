@@ -1,0 +1,317 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <link rel="icon" href="lg.png" type="image/x-icon">
+    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Portfolio - VPRIO</title>
+    <style>
+        body {
+            font-family: 'Poppins', sans-serif;
+            background-color: #f5f5f5;
+            margin: 0;
+            padding: 0;
+            color: #333;
+        }
+
+        .header {
+            padding: 1rem 2rem;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+        }
+
+        .header .title {
+            font-size: 24px;
+            font-weight: bold;
+            color: #2564e7;
+            transition: color 0.3s ease;
+        }
+
+        .header .back-button {
+            color: #000000;
+            text-decoration: none;
+            font-size: 1rem;
+            display: flex;
+            align-items: center;
+        }
+
+        .header .back-button i {
+            margin-right: 0.5rem;
+        }
+
+        .container {
+            max-width: 1300px;
+            margin: 2rem auto;
+            padding: 0 1rem;
+        }
+
+        h1 {
+            text-align: center;
+            margin-bottom: 1rem;
+            font-size: 2rem;
+            color: #333;
+        }
+
+        .card-container {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 1.5rem;
+        }
+
+        .card {
+            background-color: #fff;
+            border-radius: 10px;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+            overflow: hidden;
+            display: flex;
+            flex-direction: column;
+            transition: all 0.3s ease;
+        }
+
+        .card:hover {
+            transform: translateY(-5px);
+        }
+
+        .card img {
+            width: 100%;
+            object-fit: cover;
+            display: none; /* Default hidden */
+            cursor: pointer; /* Show pointer cursor on image */
+        }
+
+        .card-content {
+            padding: 1rem;
+        }
+
+        .card-content h3 {
+            margin: 0 0 0.5rem 0;
+            font-size: 1.2rem;
+            color: #333;
+        }
+
+        .card-content p {
+            margin: 0.5rem 0;
+            color: #555;
+        }
+
+        .card-content .toggle-button {
+            display: inline-block;
+            margin-top: 1rem;
+            padding: 0.5rem 1rem;
+            background-color: #4CAF50;
+            color: #fff;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            font-size: 0.9rem;
+            transition: background-color 0.3s ease;
+        }
+
+        .card-content .toggle-button:hover {
+            background-color: #45a049;
+        }
+
+        footer.footer {
+            margin-top: 2rem;
+            text-align: center;
+            color: #aaa;
+            font-size: 0.9rem;
+        }
+
+        footer.footer span {
+            font-weight: bold;
+        }
+
+        /* Fullscreen modal styles */
+        #fullscreen-modal {
+            display: none;
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-color: rgba(0, 0, 0, 0.8);
+            justify-content: center;
+            align-items: center;
+            z-index: 1000;
+        }
+
+        #fullscreen-modal img {
+            max-width: 90%;
+            max-height: 90%;
+            object-fit: contain;
+        }
+
+        #fullscreen-modal .close-btn {
+            position: absolute;
+            top: 10px;
+            right: 20px;
+            font-size: 2rem;
+            color: #fff;
+            cursor: pointer;
+            background: none;
+            border: none;
+        }
+
+        /* Notification styles */
+        #notification {
+            display: none;
+            position: fixed; /* Fixed position to stay in place while scrolling */
+            top: 100px; /* Adjust this value to set how far from the top it should be */
+            right: 20px; /* Adjust this value to set how far from the right it should be */
+            background-color: #3e7fff;
+            color: #fff;
+            padding: 1rem 1.5rem;
+            border-radius: 5px;
+            font-size: 1rem;
+            box-shadow: 0 4px 12px rgb(255, 255, 255);
+            z-index: 999;
+            opacity: 0;
+            transform: translateY(-20px); /* Start with a slight upward offset */
+            transition: opacity 0.5s ease, transform 0.5s ease; /* Smooth fade and slide */
+        }
+
+        #notification.show {
+            display: block;
+            opacity: 1;
+            transform: translateY(0); /* Slide into place */
+        }
+
+        #countdown-timer {
+            font-weight: bold;
+        }
+
+        .notification-icon {
+            margin-right: 10px;
+        }
+    </style>
+</head>
+<body>
+    <!-- Header -->
+    <header class="header">
+        <div class="title">VPRIO</div>
+        <a href="index.html" class="back-button"><i class="fas fa-arrow-left"></i></a>
+    </header>
+
+    <div class="container">
+        <h1>Mema |•'-'•)وﾅｲｽ！</h1>
+        <div class="card-container">
+            <!-- Card 1 -->
+            <div class="card">
+                <img src="1.jpg" alt="Document Management System" onclick="openFullscreen(this)">
+                <div class="card-content">
+                    <h3>Document Management System</h3>
+                    <p>A system built for managing the ins and outs of documents. Developed during OJT.</p>
+                    <button class="toggle-button" onclick="toggleImage(this)">View Now</button>
+                </div>
+            </div>
+
+            <!-- Card 2 -->
+            <div class="card">
+                <img src="2.jpg" alt="Event Planner" onclick="openFullscreen(this)">
+                <div class="card-content">
+                    <h3>Event & Role Management</h3>
+                    <p>A system for managing online meetings, event preparation, role assignments, and note-taking.</p>
+                    <button class="toggle-button" onclick="toggleImage(this)">View Now</button>
+                </div>
+            </div>
+
+            <!-- Card 3 -->
+            <div class="card">
+                <img src="3.jpg" alt="Shopify Dummy System" onclick="openFullscreen(this)">
+                <div class="card-content">
+                    <h3>Shopify Dummy System</h3>
+                    <p>A project that replicated Shopify's interface, often mistaken for real sales results!</p>
+                    <button class="toggle-button" onclick="toggleImage(this)">View Now</button>
+                </div>
+            </div>
+
+            <!-- Card 4 -->
+            <div class="card">
+                <img src="4.jpg" alt="Hotel Management System" onclick="openFullscreen(this)">
+                <div class="card-content">
+                    <h3>Hotel Management System</h3>
+                    <p>A capstone project with booking, check-out, and automated email features.</p>
+                    <p><strong>Team Members:</strong> Arjay Hagid & Jhon Paul Mikko Ramos</p>
+                    <button class="toggle-button" onclick="toggleImage(this)">View Now</button>
+                </div>
+            </div>
+
+            <!-- Card 5 -->
+            <div class="card">
+                <img src="5.jpg" alt="In-Progress Project" onclick="openFullscreen(this)">
+                <div class="card-content">
+                    <h3>In-Progress Project</h3>
+                    <p>A confidential project, still in development. Details are not public yet.</p>
+                    <button class="toggle-button" onclick="toggleImage(this)">View Now</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <footer class="footer">
+        <p>&copy; Mike Angelo J. Mariano. <span>APRIO v1.2</span></p>
+    </footer>
+
+    <!-- Fullscreen Modal -->
+    <div id="fullscreen-modal">
+        <button class="close-btn" onclick="closeFullscreen()">×</button>
+        <img id="fullscreen-image" src="" alt="Fullscreen Image">
+    </div>
+
+    <!-- Notification -->
+    <div id="notification">
+        <i class="fas fa-info-circle notification-icon"></i>
+        <span>Tap the image to fullscreen</span>
+        <span id="countdown-timer">5s</span>
+    </div>
+
+    <script>
+        let hasShownNotification = false;
+
+        function toggleImage(button) {
+            const card = button.closest('.card');
+            const image = card.querySelector('img');
+            image.style.display = image.style.display === 'block' ? 'none' : 'block';
+
+            // Show the notification only the first time
+            if (!hasShownNotification) {
+                const notification = document.getElementById('notification');
+                const countdownElement = document.getElementById('countdown-timer');
+                notification.classList.add('show');
+
+                let countdownTime = 5; // 5 seconds countdown
+                const countdownTimer = setInterval(() => {
+                    countdownTime--;
+                    countdownElement.textContent = `${countdownTime}s`; // Update countdown
+
+                    if (countdownTime <= 0) {
+                        clearInterval(countdownTimer); // Stop the countdown
+                        notification.classList.remove('show'); // Hide notification
+                    }
+                }, 1000);
+
+                // Set flag to true so it won't show again
+                hasShownNotification = true;
+            }
+        }
+
+        function openFullscreen(img) {
+            const modal = document.getElementById('fullscreen-modal');
+            const modalImg = document.getElementById('fullscreen-image');
+            modal.style.display = 'flex';
+            modalImg.src = img.src;
+        }
+
+        function closeFullscreen() {
+            const modal = document.getElementById('fullscreen-modal');
+            modal.style.display = 'none';
+        }
+    </script>
+</body>
+</html>

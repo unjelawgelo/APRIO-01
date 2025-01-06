@@ -52,33 +52,56 @@ function searchResources() {
         }
 
 
-            // Open Modal
-    function openModal(event) {
-        event.preventDefault(); // Prevent the default anchor action
-        const modal = document.getElementById("videoModal");
-        const video = document.getElementById("modalVideo");
-        modal.style.display = "flex"; // Use flex to center the modal
-        video.play(); // Start playing the video
+ 
+
+
+// Toggle the preview image when clicking the button
+function togglePreview(event) {
+    event.preventDefault(); // Prevent the default anchor action
+
+    const previewContainer = document.getElementById("previewContainer");
+    const toggleButton = event.target; // The button that was clicked
+    
+    // Toggle the display of the preview container (show/hide the image)
+    if (previewContainer.style.display === "none") {
+        previewContainer.style.display = "block"; // Show the image
+        // Change button text after click
+        toggleButton.innerHTML = "Tap any image to See More...";
+    } else {
+        previewContainer.style.display = "none"; // Hide the image
+        // Reset button text if preview is closed
+        toggleButton.innerHTML = "Do not click!";
     }
 
-    function closeModal() {
-        const modal = document.getElementById("videoModal");
-        const video = document.getElementById("modalVideo");
-        modal.style.display = "none"; // Hide the modal
-        video.pause(); // Pause the video
-        video.currentTime = 0; // Reset the video to the beginning
-    }
+    // Make the font smaller
+    toggleButton.style.fontSize = "0.8rem";  // Adjust the font size as needed
 
-    // Close modal on clicking outside of the modal content
-    window.onclick = function(event) {
-        const modal = document.getElementById("videoModal");
-        if (event.target === modal) {
-            closeModal();
-        }
-    }
+    // Add event listeners to each image in the preview container for notification
+    const previewImages = document.querySelectorAll(".preview-container img");
+    previewImages.forEach(image => {
+        image.addEventListener("click", () => {
+            showNotification();
+        });
+    });
+}
 
-    // Initialize modal state on page load
-    window.onload = function() {
-        const modal = document.getElementById("videoModal");
-        modal.style.display = "none"; // Ensure modal is hidden on load
-    }
+
+function scrollToCard7() {
+    // Find the card7 element by its id and scroll it into view
+    const card7 = document.getElementById('card7');
+    const buttonInCard7 = card7.querySelector('.button'); // Find the button in Card 7
+
+    // Scroll to Card 7
+    card7.scrollIntoView({
+        behavior: 'smooth',
+        block: 'start'
+    });
+
+    // Add the blinking class to make the button blink
+    buttonInCard7.classList.add('blinking');
+
+    // Optional: Remove the blinking class after animation is complete (2 iterations)
+    setTimeout(() => {
+        buttonInCard7.classList.remove('blinking');
+    }, 2000); // After 2 seconds (2 iterations of the 1s animation)
+}

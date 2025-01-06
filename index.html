@@ -42,21 +42,28 @@
                 <p>More | 920 MB - <i>Disabled</i></p>
                 <p>>> Use AI to practice is not yet available</p>
                 <a href="resources.html" class="button">See resources</a>
-                <!-- <a href="https://drive.google.com/file/d/1dBRRwlxPTd_4JAt--9zsu7ndV-q6jnRX/view?usp=drive_link" class="button more">More</a> -->
-                <!-- <a href="" class="button more">More</a> -->
                 <a href="#" class="button more" onclick="alert('This option is disabled by the owner')">More</a>
-
                 <a href="#" class="button disabled">Use AI to practice</a>
             </div>
 
-            <!-- Card 2: In-Progress Project -->
-            <div class="card" data-title="In-Progress Project">
-                <h3>In-Progress Project</h3>
-                <p><strong>???:</strong> Innovation</p>
-                <p>As the CEO and Founder of APRIO, we are dedicated to enhancing human satisfaction.</p>
-                <p>Our mission is to develop innovative solutions that prioritize people, ensuring that our work positively impacts lives and fosters meaningful connections.</p>
-                <a href="#" class="button" onclick="openModal(event)">Preview Only</a>
-            </div>
+<!-- Card 2 -->
+<div class="card" data-title="In-Progress Project">
+    <h3>In-Progress Project</h3>
+    <p><strong>???:</strong> Innovation</p>
+    <p>As the CEO and Founder of APRIO, we are dedicated to enhancing human satisfaction.</p>
+
+    <!-- Image preview container, initially hidden -->
+    <div class="preview-container" id="previewContainer" style="display: none;">
+        <img src="a.jpg" alt="Project Preview" class="projectImage" onclick="scrollToCard7()">
+        <img src="c.jpg" alt="Project Preview" class="projectImage" onclick="scrollToCard7()">
+        <img src="b.jpg" alt="Project Preview" class="projectImage" onclick="scrollToCard7()">
+    </div>
+
+    <a href="#" class="button" onclick="togglePreview(event)">Do not click!</a>
+</div>
+
+            
+            
 
             <!-- Card 3: Shopify SalesBoard -->
             <div class="card" data-title="Replicated Shopify Sales Board">
@@ -84,37 +91,55 @@
             </div>
 
             <!-- Card 6: AWS Certificate -->
-            <div class="card" data-title="AWS Certificate">
+            <!-- <div class="card" data-title="AWS Certificate">
                 <h3>AWS Certificate</h3>
                 <p><strong>About:</strong> Certification</p>
                 <p>Proof of AWS Certification showcasing cloud expertise and skills.</p>
                 <a href="AWS_Academy_Graduate___AWS_Academy_Cloud_Foundations_Badge20231203-29-rdd1gm.pdf" class="button" target="_blank">View Certificate</a>
-            </div>
-        </div>
+            </div> -->
 
-        <!-- Modal -->
-        <div id="videoModal" class="modal">
-            <div class="modal-content">
-                <span class="close" onclick="closeModal()">&times;</span>
-                <div class="card">
-                    <div class="video-container">
-                        <video id="modalVideo" controls>
-                            <source src="aprio.mp4" type="video/mp4">
-                            Your browser does not support the video tag.
-                        </video>
-                    </div>
-                </div>
-            </div>
-        </div>
+<!-- Card 7 -->
+<div class="card" id="card7" data-title="Other Projects">
+    <h3>Other Projects</h3>
+    <p><strong>Category:</strong> Recent & Personal Work</p>
+    <p>A collection of innovative systems and projects designed to address various needs and challenges. These works reflect creativity, problem-solving, and dedication to delivering impactful solutions.</p>
+    <p>Discover projects that range from conceptual experiments to functional applications.</p>
+    <a href="portfolio.html" class="button">View Portfolio</a>
+</div>
+
 
     <!-- Floating Frog Icon -->
     <div id="frogIcon" class="frog-icon" onclick="floodWithFrogs()">
         <i class="fas fa-frog"></i>
     </div>
     
-<style>
-     /* Footer styling */
-     footer.footer {
+    <style>
+        /* Highlighted button style */
+
+
+        /* Blinking animation */
+@keyframes blink {
+    0% {
+        background-color: #000000;
+        color: white;
+    }
+    50% {
+        background-color: transparent;
+        color: #000000;
+    }
+    100% {
+        background-color: #000000;
+        color: white;
+    }
+}
+
+/* Highlighted button with blinking effect */
+.button.blinking {
+    animation: blink 1s ease-in-out 2; /* 1s duration, 2 iterations */
+    border: 2px solid #000000;
+}
+
+        footer.footer {
             margin-top: 30px;
             color: #aaa;
             font-size: 0.9rem;
@@ -122,16 +147,45 @@
         footer.footer span {
             font-weight: bold;
         }
-        
-</style>
 
+        
+        .preview-container {
+            display: none; /* Initially hidden */
+            display: block; /* Stack images vertically */
+            gap: 10px; /* Space between images */
+        }
+
+        .preview-container img {
+            width: 100%; /* Take up full width of the container */
+            height: auto; /* Maintain aspect ratio */
+            cursor: pointer; /* Indicate that the images are clickable */
+            border-radius: 8px; /* Optional: Rounded corners for the images */
+        }
+
+        /* Fullscreen styles */
+        .fullscreen {
+            position: fixed; /* Fix the image in place */
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            object-fit: contain; /* Make sure the image fits within the screen */
+            z-index: 9999; /* Ensure the image appears above all other content */
+            background-color: rgba(0, 0, 0, 0.8); /* Dark background */
+            display: none; /* Initially hidden */
+            cursor: zoom-out; /* Indicate that the user can close it */
+        }
+
+
+
+
+    </style>
 
     <!-- Footer -->
     <footer class="footer">
-        <p>&copy; Mike Angelo Mariano | 2024 APRIO. <span>Version 1.0</span></p>
+        <p>&copy; Mike Angelo J. Mariano. <span>APRIO v1.2</span></p>
     </footer>
 
-    
-<script src="scripts.js" defer></script>
-    </body>
+    <script src="scripts.js" defer></script>
+</body>
 </html>

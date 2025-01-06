@@ -102,11 +102,34 @@
 <div class="card" id="card7" data-title="Other Projects">
     <h3>Other Projects</h3>
     <p><strong>Category:</strong> Recent & Personal Work</p>
-    <p>A collection of innovative systems and projects designed to address various needs and challenges. These works reflect creativity, problem-solving, and dedication to delivering impactful solutions.</p>
+    <p>A collection of innovative systems and projects designed to address various needs and challenges.</p>
     <p>Discover projects that range from conceptual experiments to functional applications.</p>
+    <!-- New Badge with success color text -->
+    <span class="new-badge">New</span>
     <a href="portfolio.html" class="button">View Portfolio</a>
 </div>
 
+<style>
+    /* Card container should have relative positioning */
+    .card {
+        position: relative; /* Ensures the badge is positioned relative to the card */
+    }
+
+    /* Success (green) text Badge styles */
+    .new-badge {
+        position: absolute;
+        top: 10px;
+        right: 10px;
+        background-color: white; /* Background color is white */
+        color: #007bff; /* Success green text color */
+        font-size: 0.8rem;
+        padding: 5px 10px;
+        border-radius: 20px;
+        font-weight: bold;
+        z-index: 1; /* Ensure it appears above other elements */
+        border: 2px solid #51a2f9; /* Optional: Add green border */
+    }
+</style>
 
     <!-- Floating Frog Icon -->
     <div id="frogIcon" class="frog-icon" onclick="floodWithFrogs()">

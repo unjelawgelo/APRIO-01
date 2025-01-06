@@ -302,16 +302,26 @@
         }
 
         function openFullscreen(img) {
-            const modal = document.getElementById('fullscreen-modal');
-            const modalImg = document.getElementById('fullscreen-image');
-            modal.style.display = 'flex';
-            modalImg.src = img.src;
-        }
+    const modal = document.getElementById('fullscreen-modal');
+    const modalImg = document.getElementById('fullscreen-image');
+    modal.style.display = 'flex';
+    modalImg.src = img.src;
 
-        function closeFullscreen() {
-            const modal = document.getElementById('fullscreen-modal');
-            modal.style.display = 'none';
+    // Add event listener to close fullscreen when clicking outside the image
+    modal.addEventListener('click', (event) => {
+        // Check if the clicked area is the modal container, not the image
+        if (event.target === modal) {
+            closeFullscreen();
         }
+    });
+}
+
+function closeFullscreen() {
+    const modal = document.getElementById('fullscreen-modal');
+    modal.style.display = 'none';
+}
+
+
     </script>
 </body>
 </html>

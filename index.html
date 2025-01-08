@@ -36,37 +36,29 @@
                 <p>However, by taking this sample entrance exam, you can assess your knowledge and practice or familiarize yourself with the types of questions.</p>
                 <p>While I can't promise specific results, your effort and preparation will play a significant role in your success. Personally, I found that using these reviewers (I used one before the pandemic) helped me a lot.</p>
                 <p>This is not sponsored; all the files are free and sourced from public resources.</p>
-                <p><strong>Do your best, future Sielesyuans!<br>
-                KAYA YAAAANN!!</strong> </p>
+                <p><strong>Do your best, future Sielesyuans!<br>KAYA YAAAANN!!</strong></p>
                 <p>See Resources | 29.1 MB</p>
-                <p>More | 920 MB - <i>Disabled</i></p>
+                <p>More | 304 MB - <i>Enabled</i></p>
                 <p>>> Use AI to practice is not yet available</p>
                 <a href="resources.html" class="button">See resources</a>
-                <a href="#" class="button more" onclick="alert('This option is disabled by the owner')">More</a>
+                <a href="masisipag.html" class="button more">More</a>
                 <a href="#" class="button disabled">Use AI to practice</a>
             </div>
 
-<!-- Card 2 -->
-<div class="card" data-title="In-Progress Project">
-    <h3>In-Progress Project</h3>
-    <p><strong>???:</strong> Innovation</p>
-    <p>As the CEO and Founder of APRIO, we are committed to enhancing human satisfaction by developing innovative solutions that address real-world challenges.</p>
-    <p>Our goal is to create impactful projects that improve lives and empower individuals, driving positive change for a better future.</p>
+            <!-- Card 2 -->
+            <div class="card" data-title="In-Progress Project">
+                <h3>In-Progress Project</h3>
+                <p><strong>???:</strong> Innovation</p>
+                <p>As the CEO and Founder of APRIO, we are committed to enhancing human satisfaction by developing innovative solutions that address real-world challenges.</p>
+                <div class="preview-container" id="previewContainer" style="display: none;">
+                    <img src="a.jpg" alt="Project Preview" class="projectImage" onclick="scrollToCard7()">
+                    <img src="c.jpg" alt="Project Preview" class="projectImage" onclick="scrollToCard7()">
+                    <img src="b.jpg" alt="Project Preview" class="projectImage" onclick="scrollToCard7()">
+                </div>
+                <a href="#" class="button" onclick="togglePreview(event)">Do not click!</a>
+            </div>
 
-    <!-- Image preview container, initially hidden -->
-    <div class="preview-container" id="previewContainer" style="display: none;">
-        <img src="a.jpg" alt="Project Preview" class="projectImage" onclick="scrollToCard7()">
-        <img src="c.jpg" alt="Project Preview" class="projectImage" onclick="scrollToCard7()">
-        <img src="b.jpg" alt="Project Preview" class="projectImage" onclick="scrollToCard7()">
-    </div>
-
-    <a href="#" class="button" onclick="togglePreview(event)">Do not click!</a>
-</div>
-
-            
-            
-
-            <!-- Card 3: Shopify SalesBoard -->
+            <!-- Card 3 -->
             <div class="card" data-title="Replicated Shopify Sales Board">
                 <h3>Shopify SalesBoard</h3>
                 <p><strong>About:</strong> <span>OpenAI</span> | Personal Project</p>
@@ -91,119 +83,22 @@
                 <a href="#" class="button disabled">Not Available</a>
             </div>
 
-            <!-- Card 6: AWS Certificate -->
-            <!-- <div class="card" data-title="AWS Certificate">
-                <h3>AWS Certificate</h3>
-                <p><strong>About:</strong> Certification</p>
-                <p>Proof of AWS Certification showcasing cloud expertise and skills.</p>
-                <a href="AWS_Academy_Graduate___AWS_Academy_Cloud_Foundations_Badge20231203-29-rdd1gm.pdf" class="button" target="_blank">View Certificate</a>
-            </div> -->
+            <!-- Card 7 -->
+            <div class="card" id="card7" data-title="Other Projects">
+                <h3>Other Projects</h3>
+                <p><strong>Category:</strong> Recent & Personal Work</p>
+                <p>A collection of innovative systems and projects designed to address various needs and challenges.</p>
+                <span class="new-badge">New</span>
+                <a href="portfolio.html" class="button">View Portfolio</a>
+            </div>
+        </div>
 
-<!-- Card 7 -->
-<div class="card" id="card7" data-title="Other Projects">
-    <h3>Other Projects</h3>
-    <p><strong>Category:</strong> Recent & Personal Work</p>
-    <p>A collection of innovative systems and projects designed to address various needs and challenges.</p>
-    <p>Discover projects that range from conceptual experiments to functional applications.</p>
-    <!-- New Badge with success color text -->
-    <span class="new-badge">New</span>
-    <a href="portfolio.html" class="button">View Portfolio</a>
-</div>
+        <!-- Floating Frog Icon -->
+        <div id="frogIcon" class="frog-icon" onclick="floodWithFrogs()">
+            <i class="fas fa-frog"></i>
+        </div>
 
-<style>
-    /* Card container should have relative positioning */
-    .card {
-        position: relative; /* Ensures the badge is positioned relative to the card */
-    }
-
-    /* Success (green) text Badge styles */
-    .new-badge {
-        position: absolute;
-        top: 10px;
-        right: 10px;
-        background-color: white; /* Background color is white */
-        color: #007bff; /* Success green text color */
-        font-size: 0.8rem;
-        padding: 5px 10px;
-        border-radius: 20px;
-        font-weight: bold;
-        z-index: 1; /* Ensure it appears above other elements */
-        border: 2px solid #51a2f9; /* Optional: Add green border */
-    }
-</style>
-
-    <!-- Floating Frog Icon -->
-    <div id="frogIcon" class="frog-icon" onclick="floodWithFrogs()">
-        <i class="fas fa-frog"></i>
     </div>
-    
-    <style>
-        /* Highlighted button style */
-
-
-        /* Blinking animation */
-@keyframes blink {
-    0% {
-        background-color: #000000;
-        color: white;
-    }
-    50% {
-        background-color: transparent;
-        color: #000000;
-    }
-    100% {
-        background-color: #000000;
-        color: white;
-    }
-}
-
-/* Highlighted button with blinking effect */
-.button.blinking {
-    animation: blink 1s ease-in-out 2; /* 1s duration, 2 iterations */
-    border: 2px solid #000000;
-}
-
-        footer.footer {
-            margin-top: 30px;
-            color: #aaa;
-            font-size: 0.9rem;
-        }
-        footer.footer span {
-            font-weight: bold;
-        }
-
-        
-        .preview-container {
-            display: none; /* Initially hidden */
-            display: block; /* Stack images vertically */
-            gap: 10px; /* Space between images */
-        }
-
-        .preview-container img {
-            width: 100%; /* Take up full width of the container */
-            height: auto; /* Maintain aspect ratio */
-            cursor: pointer; /* Indicate that the images are clickable */
-            border-radius: 8px; /* Optional: Rounded corners for the images */
-        }
-
-        /* Fullscreen styles */
-        .fullscreen {
-            position: fixed; /* Fix the image in place */
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            object-fit: contain; /* Make sure the image fits within the screen */
-            z-index: 9999; /* Ensure the image appears above all other content */
-            background-color: rgba(0, 0, 0, 0.8); /* Dark background */
-            display: none; /* Initially hidden */
-            cursor: zoom-out; /* Indicate that the user can close it */
-        }
-
-
-
-
-    </style>
 
     <!-- Footer -->
     <footer class="footer">

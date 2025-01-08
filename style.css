@@ -254,14 +254,29 @@ p {
 
 /* Footer */
 .footer {
-    padding: 10px;
+    padding: 12px; /* Reduced padding (top/bottom 10px, left/right 20px) */
     background-color: #f3f4f6; /* Light mode footer background */
     box-shadow: 0px -4px 10px var(--header-footer-shadow);
-    font-size: 12px;
-    color: var(--text-color);
-    text-align: center;
-    border-radius: 8px;
+    font-size: 10px; /* Reduced font size */
+    color: var(--text-color); /* Will be overridden by specific text styles below */
+    text-align: center; /* Center the text horizontally */
+    border-radius: 8px 8px 0 0; /* Rounded corners for the top of the footer */
+    width: 100%; /* Stretch to full width of the viewport */
+    margin-top: 30px; /* Ensure there's spacing above the footer */
+    margin-top: auto; /* Ensures it sits at the bottom */
 }
+
+/* Specific footer text styles */
+footer.footer {
+    color: #aaa; /* Override color for the footer text */
+    font-size: 0.9rem; /* Adjust font size for footer */
+}
+
+footer.footer span {
+    font-weight: bold; /* Make any span inside the footer bold */
+}
+
+
 
 .dark-mode .footer {
     background-color: #0f0e0e; /* Dark mode footer background */

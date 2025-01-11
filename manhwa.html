@@ -1,0 +1,396 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>PDF Reader</title>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/pdf.js/2.10.377/pdf.min.js"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600&display=swap" rel="stylesheet">
+    <style>
+        body {
+            font-family: 'Poppins', sans-serif;
+            margin: 0;
+            padding: 0;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            box-sizing: border-box;
+            background-color: #f8f9fc;
+            transition: background-color 0.3s, color 0.3s;
+        }
+
+        /* Header Styles */
+        .header {
+            padding: 1rem 2rem;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+            width: 100%;
+            position: fixed;
+            top: 0;
+            left: 0;
+            background-color: #ffffff;
+            z-index: 1000;
+            transition: background-color 0.3s, color 0.3s;
+        }
+
+        .header .title {
+            font-size: 24px;
+            font-weight: 600;
+            color: #2564e7;
+            transition: color 0.3s ease;
+        }
+
+        .header .toggle-container {
+            display: flex;
+            align-items: center;
+        }
+
+        .switch {
+            position: relative;
+            display: inline-block;
+            width: 60px;
+            height: 32px;
+        }
+
+        .switch input {
+            opacity: 0;
+            width: 0;
+            height: 0;
+        }
+
+        .slider {
+            position: absolute;
+            cursor: pointer;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background-color: #ffffff;
+            transition: 0.4s;
+            border-radius: 34px;
+            border: 1px solid #d1d1d1c5; /* Adding slight border */
+        }
+
+
+        .slider:before {
+            position: absolute;
+            content: "";
+            height: 26px;
+            width: 26px;
+            border-radius: 50%;
+            left: 4px;
+            bottom: 4px;
+            background-color: #007bff;
+            transition: 0.4s;
+        }
+
+        input:checked + .slider {
+            background-color: #4a90e2;
+        }
+
+        input:checked + .slider:before {
+            transform: translateX(26px);
+        }
+
+        h1 {
+            font-size: 28px;
+            margin-top: 90px; /* Adjusted for fixed header */
+            color: #333;
+        }
+
+        #pdf-container {
+            width: 100%;
+            max-width: 800px;
+            margin: 20px 0;
+            display: flex;
+            flex-direction: column;
+            overflow-y: scroll;
+            height: 80vh; /* Increased height for PDF container */
+            border: 1px solid #000000;
+            border-radius: 8px;
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+            background-color: #000000;
+        }
+
+        .navigation {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            margin: 20px 0;
+        }
+
+        .navigation button {
+            background-color: #4a90e2;
+            color: white;
+            border: none;
+            padding: 12px 25px;
+            margin: 0 15px;
+            border-radius: 25px;
+            font-size: 16px;
+            cursor: pointer;
+            transition: background-color 0.3s ease, transform 0.2s ease;
+        }
+
+        .navigation button:disabled {
+            background-color: #000000;
+            cursor: not-allowed;
+        }
+
+        .navigation button:hover:not(:disabled) {
+            background-color: #357ab7;
+            transform: scale(1.05);
+        }
+
+        .chapter-title {
+            font-size: 20px;
+            font-weight: bold;
+            margin: 10px 0;
+            color: #4a90e2;
+        }
+
+        .file-input {
+            margin: 20px;
+            display: block;
+            padding: 10px;
+            border-radius: 8px;
+            border: 1px solid #ddd;
+            width: 100%;
+            max-width: 300px;
+        }
+
+        .file-info {
+            font-size: 16px;
+            margin: 10px 0;
+            color: #777;
+        }
+
+        .file-name {
+            font-size: 18px;
+            font-weight: bold;
+            margin-top: 10px;
+            color: #4a90e2;
+        }
+
+        /* Light Mode Styles */
+        .light-mode {
+            background-color: #f9f9f9;
+            color: #000000;
+        }
+
+        .light-mode h1 {
+            color: #2564e7;
+        }
+
+        .light-mode .file-info {
+            color: #777;
+        }
+
+        .light-mode .file-name {
+            color: #2564e7;
+        }
+
+        /* Dark Mode Styles */
+        .dark-mode {
+            background-color: #000000;
+            color: #f9f9f9;
+        }
+
+        .dark-mode h1 {
+            color: #a0c4ff;
+        }
+
+        .dark-mode .file-info {
+            color: #ccc;
+        }
+
+        .dark-mode .file-name {
+            color: #a0c4ff;
+        }
+
+        .dark-mode .header {
+            background-color: #01020a;
+            color: #f9f9f9;
+        }
+
+        .dark-mode .header .title {
+            color: #a0c4ff;
+        }
+
+        .dark-mode .header .toggle-container {
+            color: #a0c4ff;
+        }
+
+        .dark-mode .header .toggle-container .slider {
+            background-color: #ffffff;
+        }
+
+        .dark-mode .header .toggle-container .slider:before {
+            background-color: rgb(18, 18, 18);
+        }
+/* Footer styling */
+footer.footer {
+    margin-top: 30px;
+    color: #000000;
+    font-size: 0.9rem;
+    text-align: center;
+}
+
+footer.footer span {
+    font-weight: bold;
+}
+
+/* Dark Mode Footer Styling */
+.dark-mode footer.footer {
+    color: #f9f9f9; /* Light text for dark mode */
+}
+
+.dark-mode footer.footer span {
+    color: #a0c4ff; /* Lighter color for the bold span text in dark mode */
+}
+
+    </style>
+</head>
+
+<body class="light-mode">
+    <!-- Header -->
+    <header class="header">
+        <div class="toggle-container">
+            <label class="switch">
+                <input type="checkbox" id="mode-toggle" onchange="toggleMode()">
+                <span class="slider"></span>
+            </label>
+        </div>
+        <div class="title"></div>
+    </header>
+
+    <h1>PDF Reader</h1>
+
+    <!-- File input for uploading PDFs -->
+    <input type="file" id="pdf-files" class="file-input" accept=".pdf" multiple>
+
+    <!-- Display how many files are uploaded -->
+    <div class="file-info" id="file-info">No files uploaded</div>
+
+    <!-- Display the file name being shown -->
+    <div class="file-name" id="file-name">No File Selected</div>
+
+    <div class="chapter-title" id="chapter-title">No Page Loaded</div>
+
+    <!-- Container to display PDF -->
+    <div id="pdf-container"></div>
+
+    <div class="navigation">
+        <button id="prev-btn" onclick="prevChapter()" disabled>&#8592; Previous</button>
+        <button id="next-btn" onclick="nextChapter()" disabled>Next &#8594;</button>
+    </div>
+
+    <footer class="footer">
+        <p>&copy; 2025 Mike Angelo J. Mariano. <span>APRIO v1.2</span></p>
+    </footer>
+
+    <script>
+        let pdfs = [];
+        let currentChapter = 0;
+        let pdfDoc = null;
+        let pageNum = 1;
+        let scale = 1;
+
+        document.getElementById("pdf-files").addEventListener("change", handleFileUpload, false);
+
+        function handleFileUpload(event) {
+            const files = event.target.files;
+            if (files.length > 0) {
+                pdfs = Array.from(files);
+                currentChapter = 0;
+                document.getElementById("file-info").textContent = `${files.length} file(s) uploaded. Viewing Page 1.`;
+                loadPDF(currentChapter);
+                document.getElementById("next-btn").disabled = false;
+            } else {
+                document.getElementById("file-info").textContent = "No files uploaded";
+            }
+        }
+
+        function loadPDF(chapterIndex) {
+            const file = pdfs[chapterIndex];
+            const fileURL = URL.createObjectURL(file);
+
+            document.getElementById("file-name").textContent = `Currently Viewing: ${file.name}`;
+
+            pdfjsLib.getDocument(fileURL).promise.then(function(pdf) {
+                pdfDoc = pdf;
+                renderPages();
+            });
+
+            document.getElementById("chapter-title").textContent = `Page ${chapterIndex + 1}`;
+
+            document.getElementById("prev-btn").disabled = (chapterIndex <= 0);
+            document.getElementById("next-btn").disabled = (chapterIndex >= pdfs.length - 1);
+            document.getElementById("file-info").textContent = `${pdfs.length} file(s) uploaded. Viewing Page ${chapterIndex + 1}.`;
+        }
+
+        function renderPages() {
+            const container = document.getElementById("pdf-container");
+            container.innerHTML = '';
+
+            const numPages = pdfDoc.numPages;
+
+            for (let i = 1; i <= numPages; i++) {
+                renderPage(i);
+            }
+        }
+
+        function renderPage(num) {
+            pdfDoc.getPage(num).then(function(page) {
+                const viewport = page.getViewport({ scale: scale });
+
+                const container = document.getElementById("pdf-container");
+                const containerWidth = container.offsetWidth;
+                const scaleFactor = containerWidth / viewport.width;
+                scale = scaleFactor > 1 ? 1 : scaleFactor;
+
+                const adjustedViewport = page.getViewport({ scale: scale });
+
+                const canvas = document.createElement('canvas');
+                const context = canvas.getContext('2d');
+                canvas.height = adjustedViewport.height;
+                canvas.width = adjustedViewport.width;
+                container.appendChild(canvas);
+
+                page.render({ canvasContext: context, viewport: adjustedViewport });
+            });
+        }
+
+        function prevChapter() {
+            if (currentChapter > 0) {
+                currentChapter--;
+                loadPDF(currentChapter);
+            }
+        }
+
+        function nextChapter() {
+            if (currentChapter < pdfs.length - 1) {
+                currentChapter++;
+                loadPDF(currentChapter);
+            }
+        }
+
+        function toggleMode() {
+            const body = document.body;
+            const toggleButton = document.getElementById("mode-toggle");
+            const header = document.querySelector(".header");
+
+            if (body.classList.contains("light-mode")) {
+                body.classList.remove("light-mode");
+                body.classList.add("dark-mode");
+                header.classList.add("dark-mode");
+            } else {
+                body.classList.remove("dark-mode");
+                body.classList.add("light-mode");
+                header.classList.remove("dark-mode");
+            }
+        }
+    </script>
+</body>
+</html>

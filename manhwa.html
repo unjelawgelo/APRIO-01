@@ -73,7 +73,6 @@
             border: 1px solid #d1d1d1c5; /* Adding slight border */
         }
 
-
         .slider:before {
             position: absolute;
             content: "";
@@ -229,26 +228,78 @@
         .dark-mode .header .toggle-container .slider:before {
             background-color: rgb(18, 18, 18);
         }
-/* Footer styling */
-footer.footer {
-    margin-top: 30px;
-    color: #000000;
-    font-size: 0.9rem;
-    text-align: center;
-}
 
-footer.footer span {
-    font-weight: bold;
-}
+        /* Modal Box */
+        #pdf-list-modal {
+            display: none;
+            position: fixed;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            background-color: #fff;
+            padding: 20px;
+            border-radius: 8px;
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+            z-index: 999;
+            width: 80%;
+            max-width: 500px;
+            max-height: 60vh; /* Set max height */
+            overflow-y: auto; /* Enable scrolling if content overflows */
+        }
 
-/* Dark Mode Footer Styling */
-.dark-mode footer.footer {
-    color: #f9f9f9; /* Light text for dark mode */
-}
+        /* Style for modal buttons container */
+        .modal-buttons {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 10px;
+        }
 
-.dark-mode footer.footer span {
-    color: #a0c4ff; /* Lighter color for the bold span text in dark mode */
-}
+        .modal-buttons button {
+            padding: 10px 15px;
+            font-size: 14px;
+            border-radius: 5px;
+            background-color: #4a90e2;
+            color: white;
+            border: none;
+            cursor: pointer;
+            width: auto;
+        }
+
+        .modal-buttons button:hover {
+            background-color: #357ab7;
+        }
+
+        /* Close button */
+        .close-modal-btn {
+            margin-top: 20px;
+            padding: 10px 15px;
+            background-color: #f44336;
+            color: white;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+        }
+
+        .close-modal-btn:hover {
+            background-color: #d32f2f;
+        }
+
+        /* Success Button Style */
+        .success-btn {
+            background-color: #28a745; /* Green background */
+            color: white; /* White text */
+            border: none;
+            padding: 10px 20px;
+            font-size: 16px;
+            border-radius: 5px;
+            cursor: pointer;
+            transition: background-color 0.3s ease, transform 0.2s ease;
+        }
+
+        .success-btn:hover {
+            background-color: #218838; /* Darker green on hover */
+            transform: scale(1.05); /* Slight scale effect on hover */
+        }
 
     </style>
 </head>
@@ -262,13 +313,15 @@ footer.footer span {
                 <span class="slider"></span>
             </label>
         </div>
-        <div class="title"></div>
     </header>
 
     <h1>PDF Reader</h1>
 
     <!-- File input for uploading PDFs -->
     <input type="file" id="pdf-files" class="file-input" accept=".pdf" multiple>
+
+    <!-- Button to open PDF list modal, initially hidden -->
+    <button class="success-btn" id="view-pdfs-btn" onclick="openPDFList()" style="display: none;">View All PDFs</button>
 
     <!-- Display how many files are uploaded -->
     <div class="file-info" id="file-info">No files uploaded</div>
@@ -286,9 +339,20 @@ footer.footer span {
         <button id="next-btn" onclick="nextChapter()" disabled>Next &#8594;</button>
     </div>
 
+    <!-- Modal to display list of PDFs -->
+    <div id="pdf-list-modal">
+        <div class="modal-buttons" id="modal-buttons"></div>
+        <button class="close-modal-btn" onclick="closePDFList()">Close</button>
+    </div>
+
     <footer class="footer">
-        <p>&copy; 2025 Mike Angelo J. Mariano. <span>APRIO v1.2</span></p>
+        <p>&copy; 2025 | Mike Angelo J. Mariano. <span class="blue-text">APRIO v1.2</span></p>
     </footer>
+    <style>
+        .blue-text {
+            color: #3e6fce; /* Blue color */
+        }
+    </style>
 
     <script>
         let pdfs = [];
@@ -307,8 +371,14 @@ footer.footer span {
                 document.getElementById("file-info").textContent = `${files.length} file(s) uploaded. Viewing Page 1.`;
                 loadPDF(currentChapter);
                 document.getElementById("next-btn").disabled = false;
+
+                // Show "View All PDFs" button if PDFs are uploaded
+                document.getElementById("view-pdfs-btn").style.display = "inline-block";
             } else {
                 document.getElementById("file-info").textContent = "No files uploaded";
+
+                // Hide "View All PDFs" button if no PDFs are uploaded
+                document.getElementById("view-pdfs-btn").style.display = "none";
             }
         }
 
@@ -390,6 +460,30 @@ footer.footer span {
                 body.classList.add("light-mode");
                 header.classList.remove("dark-mode");
             }
+        }
+
+        function openPDFList() {
+            const modal = document.getElementById("pdf-list-modal");
+            const modalButtons = document.getElementById("modal-buttons");
+
+            // Clear existing buttons and create new ones
+            modalButtons.innerHTML = '';
+            pdfs.forEach((pdf, index) => {
+                const button = document.createElement("button");
+                button.textContent = pdf.name;
+                button.onclick = () => {
+                    currentChapter = index;
+                    loadPDF(currentChapter);
+                    closePDFList();
+                };
+                modalButtons.appendChild(button);
+            });
+
+            modal.style.display = "block";
+        }
+
+        function closePDFList() {
+            document.getElementById("pdf-list-modal").style.display = "none";
         }
     </script>
 </body>

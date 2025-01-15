@@ -301,6 +301,28 @@
             transform: scale(1.05); /* Slight scale effect on hover */
         }
 
+
+
+        /* Back Button Styles */
+        .back-button {
+            position: absolute;
+            top: 80px;
+            right: 20px;
+            background-color: #4a90e2;
+            color: #fff;
+            text-decoration: none;
+            padding: 10px 20px;
+            border-radius: 5px;
+            font-size: 14px;
+            font-weight: bold;
+            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
+            transition: background-color 0.3s ease, transform 0.2s ease;
+        }
+
+        .back-button:hover {
+            background-color: #357ab7;
+            transform: scale(1.05);
+        }
     </style>
 </head>
 
@@ -313,9 +335,15 @@
                 <span class="slider"></span>
             </label>
         </div>
+        
     </header>
 
+    <!-- Back Button -->
+    <a href="portfolio.html" class="back-button">&#8592; </a>
+
+
     <h1>PDF Reader</h1>
+
 
     <!-- File input for uploading PDFs -->
     <input type="file" id="pdf-files" class="file-input" accept=".pdf" multiple>

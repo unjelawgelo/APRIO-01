@@ -296,57 +296,70 @@
         </div>
         <script src="scripts.js" defer></script>
 
-    <script>
-        let hasShownNotification = false;
-
-        function toggleImage(button) {
-            const card = button.closest('.card');
-            const image = card.querySelector('img');
-            image.style.display = image.style.display === 'block' ? 'none' : 'block';
-
-            // Show the notification only the first time
-            if (!hasShownNotification) {
-                const notification = document.getElementById('notification');
-                const countdownElement = document.getElementById('countdown-timer');
-                notification.classList.add('show');
-
-                let countdownTime = 5; // 5 seconds countdown
-                const countdownTimer = setInterval(() => {
-                    countdownTime--;
-                    countdownElement.textContent = `${countdownTime}s`; // Update countdown
-
-                    if (countdownTime <= 0) {
-                        clearInterval(countdownTimer); // Stop the countdown
-                        notification.classList.remove('show'); // Hide notification
-                    }
-                }, 1000);
-
-                // Set flag to true so it won't show again
-                hasShownNotification = true;
+        <script>
+            let hasShownNotification = false;
+        
+            function toggleImage(button) {
+                const card = button.closest('.card');
+                const image = card.querySelector('img');
+                const buttonText = button.textContent;
+        
+                // Toggle the image visibility
+                image.style.display = image.style.display === 'block' ? 'none' : 'block';
+        
+                // Toggle the button text and styles
+                if (buttonText === 'View Now') {
+                    button.textContent = 'Close';
+                    button.style.backgroundColor = '#f44336';  // Red
+                    button.style.color = '#fff';  // White text
+                } else {
+                    button.textContent = 'View Now';
+                    button.style.backgroundColor = '#4CAF50';  // Green
+                    button.style.color = '#fff';  // White text
+                }
+        
+                // Show the notification only the first time
+                if (!hasShownNotification) {
+                    const notification = document.getElementById('notification');
+                    const countdownElement = document.getElementById('countdown-timer');
+                    notification.classList.add('show');
+        
+                    let countdownTime = 5; // 5 seconds countdown
+                    const countdownTimer = setInterval(() => {
+                        countdownTime--;
+                        countdownElement.textContent = `${countdownTime}s`; // Update countdown
+        
+                        if (countdownTime <= 0) {
+                            clearInterval(countdownTimer); // Stop the countdown
+                            notification.classList.remove('show'); // Hide notification
+                        }
+                    }, 1000);
+        
+                    // Set flag to true so it won't show again
+                    hasShownNotification = true;
+                }
             }
-        }
-
-        function openFullscreen(img) {
-    const modal = document.getElementById('fullscreen-modal');
-    const modalImg = document.getElementById('fullscreen-image');
-    modal.style.display = 'flex';
-    modalImg.src = img.src;
-
-    // Add event listener to close fullscreen when clicking outside the image
-    modal.addEventListener('click', (event) => {
-        // Check if the clicked area is the modal container, not the image
-        if (event.target === modal) {
-            closeFullscreen();
-        }
-    });
-}
-
-function closeFullscreen() {
-    const modal = document.getElementById('fullscreen-modal');
-    modal.style.display = 'none';
-}
-
-
-    </script>
+        
+            function openFullscreen(img) {
+                const modal = document.getElementById('fullscreen-modal');
+                const modalImg = document.getElementById('fullscreen-image');
+                modal.style.display = 'flex';
+                modalImg.src = img.src;
+        
+                // Add event listener to close fullscreen when clicking outside the image
+                modal.addEventListener('click', (event) => {
+                    // Check if the clicked area is the modal container, not the image
+                    if (event.target === modal) {
+                        closeFullscreen();
+                    }
+                });
+            }
+        
+            function closeFullscreen() {
+                const modal = document.getElementById('fullscreen-modal');
+                modal.style.display = 'none';
+            }
+        </script>
+        
 </body>
 </html>

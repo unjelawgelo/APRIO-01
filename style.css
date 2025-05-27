@@ -164,17 +164,17 @@ p {
 .card {
     display: flex;
     flex-direction: column;
-    justify-content: space-between;
+    justify-content: flex-start;
     background-color: var(--card-background);
-    border: 1px solid var(--card-border-color);
+    border: none;
     border-radius: 8px;
     width: 300px;
     padding: 20px;
     text-align: left;
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
     transition: transform 0.3s, box-shadow 0.3s;
-    height: 100%;
-    min-height: 400px;
+    height: fit-content;
+    min-height: auto;
 }
 
 .card img {
@@ -190,19 +190,16 @@ p {
     justify-content: center;
     padding: 10px 20px;
     margin: 5px 0;
-    border: 1px solid var(--card-border-color);
+    border: 1px solid #ddd;
     border-radius: 4px;
     cursor: pointer;
     text-decoration: none;
     font-weight: 500;
     font-size: 14px;
-    color: var(--text-color);
-    background-color: var(--card-background);
     transition: all 0.3s ease;
     text-align: center;
     min-width: 120px;
 }
-
 
 .card .button.view-projects {
     background-color: #1a1a1a;
@@ -231,8 +228,26 @@ p {
 }
 
 .dark-mode .card .button {
-    color: var(--text-color);
-    border-color: var(--card-border-color);
+    color: #222;
+    /* border-color: #fff; */
+    background-color: #fff;
+}
+
+.dark-mode .card .button.view-projects {
+    background-color: #000;
+    color: #fff;
+    border: none;
+}
+
+.dark-mode .card .button.view-projects:hover {
+    background-color: #000;
+    color: #fff;
+}
+
+.dark-mode .card .button.more {
+    background-color: #fff;
+    color: #18181a;
+    /* border: 1px solid #fff; */
 }
 
 .dark-mode .card .button:hover {
@@ -259,6 +274,7 @@ p {
 /* Resume Filename */
 .resume-filename {
     margin-top: 10px;
+    margin-bottom: 0;
     padding: 10px;
     background-color: var(--card-background);
     border: none;
@@ -267,8 +283,8 @@ p {
 
 .resume-filename a {
     color: #3e6fce;
-    font-weight: bold;
     text-decoration: none;
+    font-weight: bold;
 }
 
 .resume-filename a:hover {

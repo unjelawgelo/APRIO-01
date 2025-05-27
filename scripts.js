@@ -7,20 +7,12 @@ const MAX_FROGS = 20;
 let themeToggleCooldown = false;
 
 function toggleTheme() {
-    if (themeToggleCooldown) return;
-    
     const body = document.body;
     body.classList.toggle("dark-mode");
     
     // Update ARIA attributes
     const toggleSwitch = document.querySelector('.toggle-switch');
     toggleSwitch.setAttribute('aria-checked', body.classList.contains('dark-mode'));
-    
-    // Set cooldown
-    themeToggleCooldown = true;
-    setTimeout(() => {
-        themeToggleCooldown = false;
-    }, 500);
 }
 
 // Debounced search functionality
@@ -82,14 +74,8 @@ function toggleResumeFilename(event, button) {
     }
 }
 
-// Rate-limited frog animation
-let lastFrogTime = 0;
-const FROG_RATE_LIMIT = 5000; // 5 seconds between frog animations
-
+// Frog animation without rate limiting
 function floodWithFrogs() {
-    const now = Date.now();
-    if (now - lastFrogTime < FROG_RATE_LIMIT) return;
-    
     const frogIcon = document.getElementById("frogIcon");
     
     // Change the icon to a frog face
@@ -99,16 +85,16 @@ function floodWithFrogs() {
         setTimeout(() => {
             const frog = document.createElement("div");
             frog.className = "frog";
-            frog.innerHTML = "🐸";
+            frog.innerHTML = '<span class="frog-face">🐸</span>';
             document.body.appendChild(frog);
             
-            // Randomize the horizontal position
-            frog.style.left = Math.random() * window.innerWidth + 'px';
+            // Animate frog
+            frog.style.left = Math.random() * (window.innerWidth - 40) + 'px';
+            frog.style.top = Math.random() * (window.innerHeight - 40) + 'px';
+            frog.style.transform = `scale(${Math.random() * 0.5 + 0.5}) rotate(${Math.random() * 360}deg)`;
             
-            // Remove the frog after the animation
-            setTimeout(() => {
-                frog.remove();
-            }, FROG_ANIMATION_DURATION);
+            // Remove frog after animation
+            setTimeout(() => frog.remove(), FROG_ANIMATION_DURATION);
         }, i * FROG_SPAWN_DELAY);
     }
     
@@ -116,6 +102,4 @@ function floodWithFrogs() {
     setTimeout(() => {
         frogIcon.innerHTML = '<i class="fas fa-frog"></i>';
     }, 2000);
-    
-    lastFrogTime = now;
 }

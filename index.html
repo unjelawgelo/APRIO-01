@@ -20,7 +20,7 @@
 
     <div class="container">
         <h1>Welcome to VPRIO.</h1>
-        <p>APRIO is your personal virtual vault now! Your one-stop resource for mock exams and study materials</p>
+        <p>VPRIO is my personal virtual vault — a bridge connecting me to all the solutions I've created so far.</p>
 
         <div class="search-bar">
             <input type="text" id="searchInput" placeholder="Search resources..." onkeyup="searchResources()">
@@ -30,81 +30,46 @@
         <div class="card-container">
             <!-- Card 1 -->
             <div class="card" data-title="CLSU CAT Reviewer">
-                <h3>CLSU CAT Reviewer</h3>
-                <p><strong>Subject:</strong> Entrance Exam</p>
-                <p>These reviewers are for incoming freshmen students. Remember, this is not the actual exam you will encounter prior to your admission.</p>
-                <p>However, by taking this sample entrance exam, you can assess your knowledge and practice or familiarize yourself with the types of questions.</p>
-                <p>While I can't promise specific results, your effort and preparation will play a significant role in your success. Personally, I found that using these reviewers (I used one before the pandemic) helped me a lot.</p>
-                <p>This is not sponsored; all the files are free and sourced from public resources.</p>
-                <p><strong>Do your best, future Sielesyuans!<br>
-                KAYA YAAAANN!!</strong> </p>
-                <p>See Resources | 29.1 MB</p>
-                <p>More | 920 MB - <i>Disabled</i></p>
-                <p>>> Use AI to practice is not yet available</p>
-                <a href="resources.html" class="button">See resources</a>
+                <h3>BUSINESS CARD</h3>
+                <p><strong>Subject:</strong> Portfolio</p>
+                <!-- <p>These reviewers are for incoming freshmen students. Remember, this is not the actual exam you will encounter prior to your admission.</p> -->
+
+                <img src="mike.png" alt="Mike" class="projectImage">
+                <a href="https://cons7.vercel.app/" class="button">See projects</a>
                 <a href="#" class="button more" onclick="alert('This option is disabled by the owner')">More</a>
-                <a href="#" class="button disabled">Use AI to practice</a>
+                <a href="#" class="button disabled">Disabled</a>
             </div>
 
             <!-- Card 2 -->
             <div class="card" data-title="In-Progress Project">
-                <h3>In-Progress Project</h3>
-                <p><strong>???:</strong> Innovation</p>
-                <p>As the CEO and Founder of APRIO, we are committed to enhancing human satisfaction by developing innovative solutions that address real-world challenges.</p>
-                <p>Our goal is to create impactful projects that improve lives and empower individuals, driving positive change for a better future.</p>
+                <h3>MY LEARNING JOURNEY</h3>
+                <p><strong>Subject:</strong> Innovation!</p>
+                <p>I’m a recent CLSU graduate who began coding to solve real needs in our church. Laravel became my forte, but AI opened new doors. </p>
+                <p> I’m not a full-stack expert—but I turn ideas into working prototypes that solve real problems. Innovation over perfection. Execution over theory.</p>
+                
+                <p><strong>Experimenting with:</strong> Business Card Designs</p>
 
-                <!-- Image preview container, initially hidden -->
-                <div class="preview-container" id="previewContainer" style="display: none;">
-                    <img src="a.jpg" alt="Project Preview" class="projectImage" onclick="scrollToCard7()">
-                    <img src="c.jpg" alt="Project Preview" class="projectImage" onclick="scrollToCard7()">
-                    <img src="b.jpg" alt="Project Preview" class="projectImage" onclick="scrollToCard7()">
+                <img src="a.jpg" alt="Project Preview" class="projectImage" style="image-rendering: smooth;"><br>
+                <p><strong>Exploring:</strong> Computer Vision and Leveraging AI</p>
+
+                <!-- Add a secure container for the video -->
+                <div class="secure-video-container" oncontextmenu="return false;" onkeydown="return false;" onmousedown="return false;" oncopy="return false;" onselectstart="return false;">
+                    <video width="100%" controls
+                           oncontextmenu="return false;"
+                           onkeydown="return false;"
+                           onmousedown="return false;"
+                           oncopy="return false;"
+                           onselectstart="return false;"
+                           onselect="return false;"
+                           ondragstart="return false;"
+                           ondrag="return false;"
+                           ondrop="return false;"
+                           style="-webkit-user-select: none; -moz-user-select: none; -ms-user-select: none; user-select: none;">
+                        <source src="ceo.mp4" type="video/mp4">
+                        Your browser does not support the video tag.
+                    </video>
                 </div>
-
-                <a href="#" class="button" onclick="togglePreview(event)">Do not click!</a>
-            </div>
-
-            <!-- Card 3: Shopify SalesBoard -->
-            <div class="card" data-title="Replicated Shopify Sales Board">
-                <h3>Shopify SalesBoard</h3>
-                <p><strong>About:</strong> <span>OpenAI</span> | Personal Project</p>
-                <p>Replicated Shopify SalesBoard (with Javascript) using OpenAI.</p>
-                <a href="https://unjelawgelo.github.io/shopify/" class="button">View Now</a>
-            </div>
-
-            <!-- Card 4 -->
-            <div class="card" data-title="How I Reached My First Million">
-                <h3>How I Reached My First Million</h3>
-                <p><strong>About:</strong> Life</p>
-                <p>A comprehensive guide, testimonies, and compilations of how it is possible to be rich while keeping your faith.</p>
-                <a href="#" class="button disabled">Not Available</a>
-            </div>
-
-            <!-- Card 5 -->
-            <div class="card" data-title="Learn A Language">
-                <h3>Learn A Language</h3>
-                <p><strong>Subject:</strong> Languages</p>
-                <p>Collection of files/tutorials on how I learned different foreign languages.</p>
-                <p>>> Chinese | French | German | JP</p>
-                <a href="#" class="button disabled">Not Available</a>
-            </div>
-
-            <!-- Card 6: AWS Certificate -->
-            <!-- <div class="card" data-title="AWS Certificate">
-                <h3>AWS Certificate</h3>
-                <p><strong>About:</strong> Certification</p>
-                <p>Proof of AWS Certification showcasing cloud expertise and skills.</p>
-                <a href="AWS_Academy_Graduate___AWS_Academy_Cloud_Foundations_Badge20231203-29-rdd1gm.pdf" class="button" target="_blank">View Certificate</a>
-            </div> -->
-
-            <!-- Card 7 -->
-            <div class="card" id="card7" data-title="Other Projects">
-                <h3>PORTFOLIO (｡•̀ᴗ-)و ̑̑✧</h3>
-                <p><strong>Category:</strong> Recent & Personal Works</p>
-                <p>A collection of innovative systems and projects designed to address various needs and challenges.</p>
-                <p>Discover projects that range from conceptual experiments to functional applications.</p>
-                <!-- New Badge with success color text -->
-                <span class="new-badge">New</span>
-                <a href="portfolio.html" class="button">View Portfolio</a>
+                
             </div>
 
             <style>
@@ -198,7 +163,7 @@
 
     <!-- Footer -->
     <footer class="footer">
-        <p>&copy; Mike Angelo J. Mariano. <span>APRIO v1.2</span></p>
+        <p>&copy; Mike Angelo J. Mariano. <span>VPRIO v4.0</span></p>
     </footer>
 
     <script src="scripts.js" defer></script>

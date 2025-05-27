@@ -1,7 +1,7 @@
         // Toggle theme
-        function toggleTheme() {
-            document.body.classList.toggle("dark-mode");
-        }
+function toggleTheme() {
+    document.body.classList.toggle("dark-mode");
+}
 
 // Search functionality
 function searchResources() {
@@ -20,88 +20,81 @@ function searchResources() {
     });
 }
 
-        // Flood with frogs function
-        function floodWithFrogs() {
-            const totalFrogs = 20; // Total number of frogs to spawn
-            const frogIcon = document.getElementById("frogIcon");
+// Flood with frogs function
+function floodWithFrogs() {
+    const totalFrogs = 20; // Total number of frogs to spawn
+    const frogIcon = document.getElementById("frogIcon");
 
-            // Change the icon to a frog face
-            frogIcon.innerHTML = '<span class="frog-face">🐸</span>';
+    // Change the icon to a frog face
+    frogIcon.innerHTML = '<span class="frog-face">🐸</span>';
 
-            for (let i = 0; i < totalFrogs; i++) {
-                setTimeout(() => {
-                    const frog = document.createElement("div");
-                    frog.className = "frog"; // Add the frog class
-                    frog.innerHTML = "🐸"; // Frog emoji
-                    document.body.appendChild(frog);
+    for (let i = 0; i < totalFrogs; i++) {
+        setTimeout(() => {
+            const frog = document.createElement("div");
+            frog.className = "frog"; // Add the frog class
+            frog.innerHTML = "🐸"; // Frog emoji
+            document.body.appendChild(frog);
 
-                    // Randomize the horizontal position
-                    frog.style.left = Math.random() * window.innerWidth + 'px';
+            // Randomize the horizontal position
+            frog.style.left = Math.random() * window.innerWidth + 'px';
 
-                    // Remove the frog after the animation
-                    setTimeout(() => {
-                        frog.remove();
-                    }, 1000); // Adjust duration to match animation duration
-                }, i * 100); // Stagger the frog appearances
-            }
-
-            // Change the icon back after a delay
+            // Remove the frog after the animation
             setTimeout(() => {
-                frogIcon.innerHTML = '<i class="fas fa-frog"></i>';
-            }, 2000); // Delay before changing icon back
-        }
-
-
- 
-
-
-// Toggle the preview image when clicking the button
-function togglePreview(event) {
-    event.preventDefault(); // Prevent the default anchor action
-
-    const previewContainer = document.getElementById("previewContainer");
-    const toggleButton = event.target; // The button that was clicked
-    
-    // Toggle the display of the preview container (show/hide the image)
-    if (previewContainer.style.display === "none") {
-        previewContainer.style.display = "block"; // Show the image
-        // Change button text after click
-        toggleButton.innerHTML = "Tap any image to See More...";
-    } else {
-        previewContainer.style.display = "none"; // Hide the image
-        // Reset button text if preview is closed
-        toggleButton.innerHTML = "Do not click!";
+                frog.remove();
+            }, 1000); // Adjust duration to match animation duration
+        }, i * 100); // Stagger the frog appearances
     }
 
-    // Make the font smaller
-    toggleButton.style.fontSize = "0.8rem";  // Adjust the font size as needed
-
-    // Add event listeners to each image in the preview container for notification
-    const previewImages = document.querySelectorAll(".preview-container img");
-    previewImages.forEach(image => {
-        image.addEventListener("click", () => {
-            showNotification();
-        });
-    });
-}
-
-
-function scrollToCard7() {
-    // Find the card7 element by its id and scroll it into view
-    const card7 = document.getElementById('card7');
-    const buttonInCard7 = card7.querySelector('.button'); // Find the button in Card 7
-
-    // Scroll to Card 7
-    card7.scrollIntoView({
-        behavior: 'smooth',
-        block: 'start'
-    });
-
-    // Add the blinking class to make the button blink
-    buttonInCard7.classList.add('blinking');
-
-    // Optional: Remove the blinking class after animation is complete (2 iterations)
+    // Change the icon back after a delay
     setTimeout(() => {
-        buttonInCard7.classList.remove('blinking');
-    }, 2000); // After 2 seconds (2 iterations of the 1s animation)
+        frogIcon.innerHTML = '<i class="fas fa-frog"></i>';
+    }, 2000); // Delay before changing icon back
 }
+
+// Video security functions
+function enhanceVideoSecurity() {
+    const video = document.querySelector('video');
+    const container = document.querySelector('.secure-video-container');
+    
+    if (video && container) {
+        // Prevent screen capture
+        video.setAttribute('capture', 'none');
+        video.setAttribute('controlsList', 'nodownload');
+        
+        // Add event listeners for security
+        container.addEventListener('contextmenu', (e) => {
+            e.preventDefault();
+            return false;
+        });
+        
+        container.addEventListener('keydown', (e) => {
+            e.preventDefault();
+            return false;
+        });
+        
+        container.addEventListener('mousedown', (e) => {
+            e.preventDefault();
+            return false;
+        });
+        
+        // Add overlay to prevent screen capture
+        const overlay = document.createElement('div');
+        overlay.style.position = 'absolute';
+        overlay.style.top = '0';
+        overlay.style.left = '0';
+        overlay.style.width = '100%';
+        overlay.style.height = '100%';
+        overlay.style.pointerEvents = 'none';
+        container.appendChild(overlay);
+    }
+}
+
+// Initialize security when page loads
+document.addEventListener('DOMContentLoaded', () => {
+    enhanceVideoSecurity();
+});
+
+// Add security check on window resize
+window.addEventListener('resize', () => {
+    enhanceVideoSecurity();
+});

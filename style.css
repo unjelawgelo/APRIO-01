@@ -158,98 +158,86 @@ p {
     justify-content: space-around;
     flex-wrap: wrap;
     gap: 20px;
+    padding: 20px 0;
 }
 
 .card {
-    display: flex; /* Use flexbox */
-    flex-direction: column; /* Stack children vertically */
-    justify-content: space-between; /* Push buttons to the bottom */
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
     background-color: var(--card-background);
     border: 1px solid var(--card-border-color);
     border-radius: 8px;
-    width: 300px; /* Fixed width */
+    width: 300px;
     padding: 20px;
     text-align: left;
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
     transition: transform 0.3s, box-shadow 0.3s;
-    height: 100%; /* Ensure card expands to full height */
+    height: 100%;
+    min-height: 400px;
 }
 
-.card.has-resume-spacing {
-    padding-bottom: 20px;
-}
-
-.card:hover {
-    transform: translateY(-5px);
-    box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
-}
-
-.card h3 {
-    margin-bottom: 10px;
-    font-size: 20px;
-    font-weight: bold;
-    color: var(--text-color);
-}
-
-.card p {
-    font-size: 14px;
-    margin-bottom: 15px;
-    color: var(--text-color);
-    font-weight: normal; /* Set text to normal weight */
+.card img {
+    max-width: 100%;
+    height: auto;
+    margin: 15px 0;
+    border-radius: 4px;
 }
 
 .card .button {
-    display: block;
-    width: 100%;
-    padding: 10px;
-    text-align: center;
-    border-radius: 5px;
-    margin-top: 10px;
+    display: inline-block;
+    padding: 10px 20px;
+    margin: 5px 0;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+    text-decoration: none;
+    font-weight: 500;
     transition: background-color 0.3s, color 0.3s;
-    border: var(--button-border); /* Set border based on mode */
-    text-decoration: none; /* Remove underlines from buttons */
 }
 
-/* Light Mode Button Styles */
-.card .button {
-    background-color: var(--see-resources-button-color); /* See resources button color */
-    color: #ffffff; /* Light mode see resources button text color */
-}
-
-/* More Button Light Mode */
 .card .button.more {
-    background-color: var(--more-button-color); /* More button color */
-    color: var(--more-button-text-color); /* Light mode more button text color */
-    border: 1px solid #222222; /* Add border for light mode More button */
-    transition: background-color 0.3s, color 0.3s, border-color 0.3s; /* Include border-color in transition */
-    margin-top: 10px;
-}
-
-/* Not Available Button Light Mode */
-.card .button.disabled {
-    background-color: var(--not-available-button-background); /* Light mode not available button */
-    color: var(--not-available-button-text-color); /* Light mode not available button text color */
-}
-
-/* Dark Mode Button Styles */
-.dark-mode .card {
-    border: 1px solid #000000; /* Set card border to white in dark mode */
-    border-width: 0.5px; /* Thinner border */
-}
-
-.dark-mode .card .button {
-    background-color: var(--see-resources-button-background);
-    color: var(--see-resources-button-text-color);
-}
-
-.dark-mode .card .button.more {
-    background-color: var(--more-button-background);
+    background-color: var(--more-button-color);
     color: var(--more-button-text-color);
+    border: 1px solid var(--card-border-color);
 }
 
-.dark-mode .card .button.disabled {
-    background-color: var(--not-available-button-color);
-    color: #ffffff; /* Text color for not available button */
+.card .button.more:hover {
+    background-color: var(--more-button-text-color);
+    color: var(--more-button-color);
+}
+
+/* Video Container */
+.secure-video-container {
+    margin: 15px 0;
+    background-color: var(--card-background);
+    border: 1px solid var(--card-border-color);
+    border-radius: 4px;
+    overflow: hidden;
+}
+
+.secure-video-container video {
+    width: 100%;
+    max-height: 300px;
+    object-fit: contain;
+}
+
+/* Resume Filename */
+.resume-filename {
+    margin-top: 10px;
+    padding: 10px;
+    background-color: var(--card-background);
+    border: 1px solid var(--card-border-color);
+    border-radius: 4px;
+}
+
+.resume-filename a {
+    color: var(--text-color);
+    text-decoration: none;
+}
+
+.resume-filename a:hover {
+    text-decoration: underline;
 }
 
 /* Collapsible Content Styles */
@@ -378,9 +366,10 @@ footer.footer span {
 .frog {
     position: fixed;
     bottom: -30px; /* Start below the viewport */
-    font-size: 30px; /* Size of the emoji */
+    font-size: 24px; /* Size of the emoji */
     opacity: 0; /* Start invisible */
-    animation: float 1s forwards; /* Animation on spawn */
+    animation: float 2s ease-in-out infinite;
+    pointer-events: none;
 }
 
 /* Change frog icon background color in dark mode */
@@ -517,19 +506,4 @@ footer.footer span {
     object-fit: contain;
     border-radius: 4px;
     max-height: 300px;
-}
-
-/* Resume Filename Styles */
-.resume-filename {
-    display: none;
-    margin-top: 10px;
-}
-
-.resume-filename.visible {
-    display: block;
-}
-
-.filename {
-    font-weight: bold;
-    color: var(--text-color);
 }

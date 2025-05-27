@@ -194,8 +194,10 @@ p {
     border-radius: 4px;
     cursor: pointer;
     text-decoration: none;
-    font-weight: 500;
+    font-weight: normal;
     font-size: 14px;
+    color: #000000;
+    background-color: #ffffff;
     transition: all 0.3s ease;
     text-align: center;
     min-width: 120px;
@@ -408,6 +410,10 @@ footer.footer span {
     align-items: center; /* Center vertically */
     transition: transform 0.3s;
     animation: float-up-down 3s ease-in-out infinite; /* Apply floating animation */
+    user-select: none; /* Prevent text selection */
+    -webkit-user-select: none; /* For Safari */
+    -ms-user-select: none; /* For IE/Edge */
+    -moz-user-select: none; /* For Firefox */
 }
 
 .frog-icon:hover {

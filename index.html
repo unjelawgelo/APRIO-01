@@ -9,7 +9,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Personal Virtual Vault</title>
 </head>
-<body>
+<body class="light-mode">
     <!-- Header -->
     <header class="header">
         <div class="title">VPRIO.</div>
@@ -29,15 +29,18 @@
         <!-- Cards Container -->
         <div class="card-container">
             <!-- Card 1 -->
-            <div class="card" data-title="CLSU CAT Reviewer">
-                <h3>BUSINESS CARD</h3>
-                <p><strong>Subject:</strong> Portfolio</p>
-                <!-- <p>These reviewers are for incoming freshmen students. Remember, this is not the actual exam you will encounter prior to your admission.</p> -->
+            <div class="card" data-title="Mike Angelo's Portfolio">
+                <h3>Mike Angelo J. Mariano</h3>
+                <p><strong>Role:</strong> Full Stack Developer</p>
+                <p><strong>Specialization:</strong> Laravel & AI Solutions</p>
 
-                <img src="mike.png" alt="Mike" class="projectImage">
-                <a href="https://cons7.vercel.app/" class="button">See projects</a>
-                <a href="#" class="button more" onclick="alert('This option is disabled by the owner')">More</a>
-                <a href="#" class="button disabled">Disabled</a>
+                <img src="mike.png" alt="Mike Angelo J. Mariano" class="projectImage">
+                <a href="https://cons7.vercel.app/" class="button">View Projects</a>
+                <a href="#" class="button more" onclick="toggleResumeFilename(event, this)">See Resume</a>
+                <div class="resume-filename">
+                    <p>Resume: <a href="resume.pdf" target="_blank" style="text-decoration: none;"><span class="filename">Mike Angelo J. Mariano - Resume.pdf</span></a></p>
+                </div>
+
             </div>
 
             <!-- Card 2 -->
@@ -47,29 +50,30 @@
                 <p>I’m a recent CLSU graduate who began coding to solve real needs in our church. Laravel became my forte, but AI opened new doors. </p>
                 <p> I’m not a full-stack expert—but I turn ideas into working prototypes that solve real problems. Innovation over perfection. Execution over theory.</p>
                 
-                <p><strong>Experimenting with:</strong> Business Card Designs</p>
-
-                <img src="a.jpg" alt="Project Preview" class="projectImage" style="image-rendering: smooth;"><br>
-                <p><strong>Exploring:</strong> Computer Vision and Leveraging AI</p>
-
-                <!-- Add a secure container for the video -->
-                <div class="secure-video-container" oncontextmenu="return false;" onkeydown="return false;" onmousedown="return false;" oncopy="return false;" onselectstart="return false;">
-                    <video width="100%" controls
-                           oncontextmenu="return false;"
-                           onkeydown="return false;"
-                           onmousedown="return false;"
-                           oncopy="return false;"
-                           onselectstart="return false;"
-                           onselect="return false;"
-                           ondragstart="return false;"
-                           ondrag="return false;"
-                           ondrop="return false;"
-                           style="-webkit-user-select: none; -moz-user-select: none; -ms-user-select: none; user-select: none;">
-                        <source src="ceo.mp4" type="video/mp4">
-                        Your browser does not support the video tag.
-                    </video>
-                </div>
+                <button class="toggle-content" onclick="toggleContent(this)">Show More</button>
                 
+                <div class="collapsible-content" style="display: none;">
+                    <p><strong>Experimenting with:</strong> Business Card Designs</p>
+                    <img src="a.jpg" alt="Project Preview" class="projectImage" style="image-rendering: smooth;"><br>
+                    <p><strong>Exploring:</strong> Computer Vision and Leveraging AI</p>
+                    <!-- Add a secure container for the video -->
+                    <div class="secure-video-container" oncontextmenu="return false;" onkeydown="return false;" onmousedown="return false;" oncopy="return false;" onselectstart="return false;">
+                        <video width="100%" controls
+                               oncontextmenu="return false;"
+                               onkeydown="return false;"
+                               onmousedown="return false;"
+                               oncopy="return false;"
+                               onselectstart="return false;"
+                               onselect="return false;"
+                               ondragstart="return false;"
+                               ondrag="return false;"
+                               ondrop="return false;"
+                               style="-webkit-user-select: none; -moz-user-select: none; -ms-user-select: none; user-select: none;">
+                            <source src="ceo.mp4" type="video/mp4">
+                            Your browser does not support the video tag.
+                        </video>
+                    </div>
+                </div>
             </div>
 
             <style>

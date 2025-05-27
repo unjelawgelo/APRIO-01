@@ -160,7 +160,6 @@ p {
     gap: 20px;
 }
 
-
 .card {
     display: flex; /* Use flexbox */
     flex-direction: column; /* Stack children vertically */
@@ -176,6 +175,9 @@ p {
     height: 100%; /* Ensure card expands to full height */
 }
 
+.card.has-resume-spacing {
+    padding-bottom: 20px;
+}
 
 .card:hover {
     transform: translateY(-5px);
@@ -220,6 +222,7 @@ p {
     color: var(--more-button-text-color); /* Light mode more button text color */
     border: 1px solid #222222; /* Add border for light mode More button */
     transition: background-color 0.3s, color 0.3s, border-color 0.3s; /* Include border-color in transition */
+    margin-top: 10px;
 }
 
 /* Not Available Button Light Mode */
@@ -233,7 +236,6 @@ p {
     border: 1px solid #000000; /* Set card border to white in dark mode */
     border-width: 0.5px; /* Thinner border */
 }
-
 
 .dark-mode .card .button {
     background-color: var(--see-resources-button-background);
@@ -250,7 +252,62 @@ p {
     color: #ffffff; /* Text color for not available button */
 }
 
+/* Collapsible Content Styles */
+.toggle-content {
+    background-color: var(--see-resources-button-color);
+    color: #ffffff;
+    border: 1px solid var(--see-resources-button-color);
+    padding: 10px 20px;
+    margin: 15px 0;
+    border-radius: 6px;
+    cursor: pointer;
+    width: fit-content;
+    text-align: center;
+    font-size: 14px;
+    font-weight: 500;
+    transition: all 0.3s ease;
+    position: relative;
+    z-index: 1;
+}
 
+.toggle-content:hover {
+    background-color: var(--see-resources-button-color);
+    border-color: var(--see-resources-button-color);
+    transform: translateY(-2px);
+    opacity: 0.9;
+}
+
+.toggle-content:active {
+    opacity: 0.8;
+}
+
+/* Dark mode styles */
+.dark-mode .toggle-content {
+    background-color: #ffffff;
+    border-color: #ffffff;
+    color: #000000;
+}
+
+.dark-mode .toggle-content:hover {
+    background-color: #ffffff;
+    border-color: #ffffff;
+    transform: translateY(-2px);
+    opacity: 0.9;
+}
+
+.collapsible-content {
+    margin-top: 15px;
+    padding: 15px;
+    background: rgba(255, 255, 255, 0.1);
+    border-radius: 8px;
+    transition: all 0.3s ease;
+    border: 1px solid rgba(0, 0, 0, 0.1);
+}
+
+.collapsible-content:hover {
+    background: rgba(255, 255, 255, 0.15);
+    border-color: rgba(0, 0, 0, 0.2);
+}
 
 /* Footer */
 .footer {
@@ -275,8 +332,6 @@ footer.footer {
 footer.footer span {
     font-weight: bold; /* Make any span inside the footer bold */
 }
-
-
 
 .dark-mode .footer {
     background-color: #0f0e0e; /* Dark mode footer background */
@@ -368,7 +423,6 @@ footer.footer span {
     }
 }
 
-
 /*MODAL*/
 
 .modal {
@@ -403,19 +457,34 @@ footer.footer span {
 }
 
 .video-container {
+    margin-top: 15px;
+    padding: 10px;
+    background: rgba(255, 255, 255, 0.1);
+    border-radius: 8px;
+    transition: all 0.3s ease;
+}
+
+.video-container:hover {
+    background: rgba(255, 255, 255, 0.15);
+}
+
+.secure-video-container {
     position: relative; /* Relative for absolute positioning of video */
     padding-bottom: 56.25%; /* 16:9 Aspect Ratio */
     height: 0; /* Remove height */
     overflow: hidden; /* Hide overflow */
+    position: relative;
 }
 
-.video-container video {
+.secure-video-container video {
     position: absolute; /* Absolute for full size */
     top: 0; 
     left: 0; 
     width: 100%; /* Full width */
     height: 100%; /* Full height */
     object-fit: cover; /* Cover aspect ratio */
+    max-height: 400px;
+    object-fit: contain;
 }
 
 .close {
@@ -450,16 +519,17 @@ footer.footer span {
     max-height: 300px;
 }
 
-.secure-video-container {
-    width: 100%;
-    max-width: 100%;
-    margin: 15px 0;
-    overflow: hidden;
+/* Resume Filename Styles */
+.resume-filename {
+    display: none;
+    margin-top: 10px;
 }
 
-.secure-video-container video {
-    width: 100%;
-    height: auto;
-    max-height: 300px;
-    object-fit: contain;
+.resume-filename.visible {
+    display: block;
+}
+
+.filename {
+    font-weight: bold;
+    color: var(--text-color);
 }

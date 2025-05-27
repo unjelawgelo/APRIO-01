@@ -20,6 +20,38 @@ function searchResources() {
     });
 }
 
+// Toggle content function
+function toggleContent(button) {
+    const content = button.nextElementSibling;
+    const isExpanded = content.style.display === 'block';
+    
+    if (isExpanded) {
+        content.style.display = 'none';
+        button.textContent = 'Show More';
+    } else {
+        content.style.display = 'block';
+        button.textContent = 'Show Less';
+    }
+}
+
+// Toggle resume filename visibility
+function toggleResumeFilename(event, button) {
+    event.preventDefault(); // Prevent page reload
+    const filenameDiv = button.nextElementSibling;
+    const card = button.closest('.card');
+    const isExpanded = filenameDiv.classList.contains('visible');
+    
+    if (isExpanded) {
+        filenameDiv.classList.remove('visible');
+        card.classList.remove('has-resume-spacing');
+        button.textContent = 'See Resume';
+    } else {
+        filenameDiv.classList.add('visible');
+        card.classList.add('has-resume-spacing');
+        button.textContent = 'Hide Resume';
+    }
+}
+
 // Flood with frogs function
 function floodWithFrogs() {
     const totalFrogs = 20; // Total number of frogs to spawn
@@ -50,51 +82,3 @@ function floodWithFrogs() {
         frogIcon.innerHTML = '<i class="fas fa-frog"></i>';
     }, 2000); // Delay before changing icon back
 }
-
-// Video security functions
-function enhanceVideoSecurity() {
-    const video = document.querySelector('video');
-    const container = document.querySelector('.secure-video-container');
-    
-    if (video && container) {
-        // Prevent screen capture
-        video.setAttribute('capture', 'none');
-        video.setAttribute('controlsList', 'nodownload');
-        
-        // Add event listeners for security
-        container.addEventListener('contextmenu', (e) => {
-            e.preventDefault();
-            return false;
-        });
-        
-        container.addEventListener('keydown', (e) => {
-            e.preventDefault();
-            return false;
-        });
-        
-        container.addEventListener('mousedown', (e) => {
-            e.preventDefault();
-            return false;
-        });
-        
-        // Add overlay to prevent screen capture
-        const overlay = document.createElement('div');
-        overlay.style.position = 'absolute';
-        overlay.style.top = '0';
-        overlay.style.left = '0';
-        overlay.style.width = '100%';
-        overlay.style.height = '100%';
-        overlay.style.pointerEvents = 'none';
-        container.appendChild(overlay);
-    }
-}
-
-// Initialize security when page loads
-document.addEventListener('DOMContentLoaded', () => {
-    enhanceVideoSecurity();
-});
-
-// Add security check on window resize
-window.addEventListener('resize', () => {
-    enhanceVideoSecurity();
-});

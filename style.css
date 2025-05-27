@@ -185,26 +185,60 @@ p {
 }
 
 .card .button {
-    display: inline-block;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
     padding: 10px 20px;
     margin: 5px 0;
-    border: none;
+    border: 1px solid var(--card-border-color);
     border-radius: 4px;
     cursor: pointer;
     text-decoration: none;
     font-weight: 500;
-    transition: background-color 0.3s, color 0.3s;
+    font-size: 14px;
+    color: var(--text-color);
+    background-color: var(--card-background);
+    transition: all 0.3s ease;
+    text-align: center;
+    min-width: 120px;
 }
 
-.card .button.more {
-    background-color: var(--more-button-color);
-    color: var(--more-button-text-color);
-    border: 1px solid var(--card-border-color);
+
+.card .button.view-projects {
+    background-color: #1a1a1a;
+    color: #fff;
+    border: none;
+    font-weight: 600;
+    border-radius: 4px;
+    box-shadow: 0 2px 8px rgba(0,0,0,0.08);
+    transition: none;
+}
+.card .button.view-projects:hover {
+    background-color: #252525;
+    color: #fff;
+    transform: none;
 }
 
 .card .button.more:hover {
-    background-color: var(--more-button-text-color);
-    color: var(--more-button-color);
+    background-color: var(--card-background);
+    color: var(--text-color);
+    transform: none;
+    border-color: var(--card-border-color);
+}
+
+.card .button:active {
+    transform: translateY(1px);
+}
+
+.dark-mode .card .button {
+    color: var(--text-color);
+    border-color: var(--card-border-color);
+}
+
+.dark-mode .card .button:hover {
+    background-color: var(--text-color);
+    color: var(--card-background);
+    border-color: var(--text-color);
 }
 
 /* Video Container */
@@ -227,12 +261,13 @@ p {
     margin-top: 10px;
     padding: 10px;
     background-color: var(--card-background);
-    border: 1px solid var(--card-border-color);
+    border: none;
     border-radius: 4px;
 }
 
 .resume-filename a {
-    color: var(--text-color);
+    color: #3e6fce;
+    font-weight: bold;
     text-decoration: none;
 }
 
